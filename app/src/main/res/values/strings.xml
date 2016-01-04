@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Encouragement</string>
+    <string name="finish">完成</string>
+    <string name="plan">添加计划</string>
+    <string name="add">添加</string>
+    <string name="history">历史</string>
+    <string name="me">我</string>
+    <string name="add_plan">添加计划</string>
+    <string name="had_finish_plan">已完成计划</string>
+    <string name="doing">正在进行</string>
+    <string name="has_not_used">未使用(点击使用)</string>
+    <string name="had_used">已使用</string>
+</resources>

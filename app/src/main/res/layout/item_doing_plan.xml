@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:paddingLeft="15dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_plan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:maxLines="1"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/iv_reward"
+        android:layout_marginLeft="15dp"
+        android:layout_width="55dp"
+        android:layout_height="35dp"
+        android:scaleType="fitCenter"
+        android:gravity="center"
+        android:src="@drawable/reward"
+        />
+
+    <Button
+        android:id="@+id/bt_finish"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_width="55dp"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="@string/finish"
+        android:src="@drawable/reward"
+        />
+</LinearLayout>
