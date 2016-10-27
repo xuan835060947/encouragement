@@ -15,6 +15,9 @@ public class History {
     }
 
     public void addPlan(Plan plan){
+        if(plan == null){
+            throw new AssertionError();
+        }
         plans.add(plan);
         encouragement += plan.getEncouragement();
     }

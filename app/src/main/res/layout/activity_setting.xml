@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_show"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:orientation="vertical"></LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_text_size"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/ll_show"
+        android:gravity="center_vertical"
+        android:text="字体大小: " />
+
+    <SeekBar
+        android:id="@+id/sb_text_size"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/ll_show"
+        android:layout_gravity="center_horizontal"
+        android:layout_toRightOf="@+id/tv_text_size"
+        android:max="100" />
+
+    <TextView
+        android:id="@+id/tv_height"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/tv_text_size"
+        android:gravity="center_vertical"
+        android:text="间距: " />
+
+    <SeekBar
+        android:id="@+id/sb_height"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/tv_text_size"
+        android:layout_gravity="center_horizontal"
+        android:layout_toRightOf="@+id/tv_height"
+        android:max="100" />
+
+    <TextView
+        android:id="@+id/tv_color"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/tv_height"
+        android:gravity="center_vertical"
+        android:text="颜色: " />
+
+    <SeekBar
+        android:id="@+id/sb_color"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:maxHeight="5dp"
+        android:layout_below="@+id/tv_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_toRightOf="@+id/tv_height"
+        android:max="100" />
+
+    <LinearLayout
+        android:id="@+id/ll_choose"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/bt_cancel"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="@string/cancel" />
+        <Button
+            android:id="@+id/bt_save"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="@string/save" />
+    </LinearLayout>
+</RelativeLayout>

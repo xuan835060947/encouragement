@@ -18,6 +18,8 @@ import java.util.Set;
  * Created by chenxiaoxuan1 on 15/12/17.
  */
 public class EncouragementWrapper {
+    private static Person mPerson;
+    private static int mTextSize;
 
     public static void addHistoryPlan(Plan plan) {
         FileTool.addLine(ShareValueUtil.HISTORY_FILE, ShareValueUtil.GSON.toJson(plan));
@@ -40,7 +42,9 @@ public class EncouragementWrapper {
             public void onGetLine(String line, int lineNum) {
                 if (lineNum >= 0) {
                     Plan plan = ShareValueUtil.GSON.fromJson(line, Plan.class);
-                    history.addPlan(plan);
+                    if (plan != null) {
+                        history.addPlan(plan);
+                    }
                 } else {
                     onGetHistory.onGet(history);
                 }
@@ -70,6 +74,9 @@ public class EncouragementWrapper {
     }
 
     public static Person getPerson(Context context) {
+        if(mPerson != null){
+            return mPerson;
+        }
         SharedPreferences preferences = context.getSharedPreferences(ShareValueUtil.PERSON_FILE, Context.MODE_PRIVATE);
         String personStr = preferences.getString(ShareValueUtil.PERSON_STRING, null);
         if (personStr != null) {
@@ -95,7 +102,7 @@ public class EncouragementWrapper {
         Log.e("getWidgetIds", "preferences : " + str);
         Set<Integer> widgetIds = new HashSet<>();
         if (str != null) {
-            Log.e("getWidgetIds"," "+widgetIds.getClass().getGenericSuperclass());
+            Log.e("getWidgetIds", " " + widgetIds.getClass().getGenericSuperclass());
             widgetIds = ShareValueUtil.GSON.fromJson(str, new TypeToken<Set<Integer>>() {
             }.getType());
         } else {
@@ -104,6 +111,13 @@ public class EncouragementWrapper {
         Log.e("getWidgetIds", "end");
         return widgetIds;
     }
+
+//    public static int getTextSize(Context context) {
+//        if(mTextSize <= 0){
+//            return mTextSize;
+//        }
+//
+//    }
 
     public interface OnGetHistory {
         void onGet(History history);

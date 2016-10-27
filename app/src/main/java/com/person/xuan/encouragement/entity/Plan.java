@@ -4,9 +4,18 @@ package com.person.xuan.encouragement.entity;
  * Created by chenxiaoxuan1 on 15/12/11.
  */
 public class Plan {
+    private long id;
     private boolean isFinish;
-    private String content;
+    private String content = "";
     private int encouragement = 0;
+
+    public Plan() {
+        this.id = System.currentTimeMillis();
+    }
+
+    public long getId() {
+        return id;
+    }
 
     public boolean isFinish() {
         return isFinish;

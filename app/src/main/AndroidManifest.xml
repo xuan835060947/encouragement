@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.SettingActivity"
+            android:screenOrientation="portrait"></activity>
 
         <!-- 声明widget对应的AppWidgetProvider -->
         <receiver android:name=".widget.EncouragementWidgetProvider">
@@ -32,16 +34,8 @@
                 android:resource="@xml/app_widget" />
         </receiver>
 
-        <service
-            android:name=".service.ControlService"
-            android:process="com.person.xuan.encouragement.service"></service>
+        <service android:name=".service.ControlService" />
 
-        <!--<receiver android:name=".broadcastreceiver.ConfigurationChangeReceiver">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="ANDROID.INTENT.ACTION.CONFIGURATION_CHANGED" />-->
-        <!--<category android:name="ANDROID.INTENT.CATEGORY.DEFAULT" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
     </application>
 
 </manifest>

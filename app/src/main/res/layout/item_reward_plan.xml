@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/tv_plan"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:gravity="right"
-        android:maxLines="1"
-        android:layout_weight="1" />
-
-    <ImageView
-        android:id="@+id/iv_finish"
-        android:layout_marginLeft="8dp"
-        android:layout_width="35dp"
-        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tv_finish"
         android:gravity="center"
-        android:padding="5dp"
-        android:src="@drawable/collection_choose"
-        />
-</LinearLayout>
+        android:maxLines="1"
+        android:text="这个是最近要完成的计划"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="      "
+        android:background="@drawable/reward_choose" />
+
+</RelativeLayout>

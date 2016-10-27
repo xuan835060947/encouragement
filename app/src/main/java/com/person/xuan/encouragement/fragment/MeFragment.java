@@ -16,6 +16,7 @@ import com.person.xuan.encouragement.R;
 import com.person.xuan.encouragement.entity.Person;
 import com.person.xuan.encouragement.entity.Plan;
 import com.person.xuan.encouragement.util.ShareValueUtil;
+import com.person.xuan.encouragement.widget.EncouragementWidgetProvider;
 import com.person.xuan.encouragement.widget.EncouragementWrapper;
 
 /**
@@ -28,7 +29,6 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     private TextView mTvPlanTitle;
     private ListView mLvPlans;
     private PlansListAdapter mAdapter;
-
     private Person mPerson;
 
     @Override
@@ -119,7 +119,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
 
         private void refreshItem(ViewHolder viewHolder, int position) {
             Plan plan = mPerson.getPlans().get(position);
-            viewHolder.position = position;
+            viewHolder.id = plan.getId();
             viewHolder.tvContent.setText(plan.getContent());
             viewHolder.btFinish.setTag(viewHolder);
             viewHolder.btFinish.setOnClickListener(onClickListener);
@@ -135,10 +135,11 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 ViewHolder viewHolder = (ViewHolder) v.getTag();
-                EncouragementWrapper.addHistoryPlan(mPerson.getPlans().get(viewHolder.position));
-                mPerson.finish(viewHolder.position);
+                EncouragementWrapper.addHistoryPlan(mPerson.getPlan(viewHolder.id));
+                mPerson.finish(viewHolder.id);
                 EncouragementWrapper.writePerson(getActivity(), mPerson);
                 refreshView();
+                EncouragementWidgetProvider.notifyDataSetChange(getActivity());
             }
         };
 
@@ -146,7 +147,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
 
 
     static class ViewHolder {
-        int position;
+        long id;
         TextView tvContent;
         ImageView ivReward;
         Button btFinish;
@@ -161,6 +162,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
                 }else {
                     EncouragementWrapper.writePerson(getActivity(), mPerson);
                     refreshView();
+                    EncouragementWidgetProvider.notifyDataSetChange(getActivity());
                 }
                 break;
         }

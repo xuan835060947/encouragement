@@ -18,4 +18,12 @@ public class ShareValueUtil {
     public static String EXTERNAL_STORAGEP_FILE_PATH = "com.xuan.encouragement/";
 
     public static final Gson GSON = new Gson();
+
+    public static final String KEY_ACTION = "KEY-ACTION";
+    public static final String KEY_ID = "ID";
+
+    public static final int ACTION_USE_STAR = 1001;
+    public static final int ACTION_FINISH_PLAN = 1002;
+    public static final int ACTION_ADD_PLAN = 1003;
+    public static final int ACTION_WATCH_PLAN = 1004;
 }
