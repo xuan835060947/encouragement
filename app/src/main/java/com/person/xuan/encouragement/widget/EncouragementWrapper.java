@@ -25,7 +25,17 @@ public class EncouragementWrapper {
         FileTool.addLine(ShareValueUtil.HISTORY_FILE, ShareValueUtil.GSON.toJson(plan));
     }
 
+    //// TODO: 16/11/18  
     public static void getHistory(final OnGetHistory onGetHistory) {
+        getHistoryFromFile(new OnGetHistoryFromFile() {
+            @Override
+            public void onGet(History history) {
+                onGetHistory.onGet(history);
+            }
+        });
+    }
+
+    public static void getHistory(int startIndex,int endIndex,final OnGetHistory onGetHistory) {
         getHistoryFromFile(new OnGetHistoryFromFile() {
             @Override
             public void onGet(History history) {

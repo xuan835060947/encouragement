@@ -28,10 +28,12 @@
     <Button
         android:id="@+id/bt_finish"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/et_plan_content"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
+        android:background="@drawable/slt_grey_button"
+        android:textSize="16sp"
         android:text="@string/save" />
 </RelativeLayout>

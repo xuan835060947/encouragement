@@ -10,7 +10,7 @@
         android:icon="@drawable/red_leader_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/CustomTheme.NoActionBar">
         <activity
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait"
@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SettingActivity"
+        <activity
+            android:name=".activity.SettingActivity"
             android:screenOrientation="portrait"></activity>
 
         <!-- 声明widget对应的AppWidgetProvider -->

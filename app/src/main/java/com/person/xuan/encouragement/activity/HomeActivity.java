@@ -1,12 +1,12 @@
 package com.person.xuan.encouragement.activity;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,7 +19,7 @@ import com.person.xuan.encouragement.fragment.HistoryFragment;
 import com.person.xuan.encouragement.fragment.MeFragment;
 import com.person.xuan.encouragement.util.ShareValueUtil;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class HomeActivity extends Activity implements View.OnClickListener {
     private String TAG = "xxxx";
     private static final String ADD_EDIT_PLAN_FRAMENT = "ADD_EDIT_PLAN_FRAMENT";
     private static final String HISTORY_PLAN_FRAMENT = "HISTORY_PLAN_FRAMENT";
