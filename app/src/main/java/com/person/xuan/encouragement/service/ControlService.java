@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.person.xuan.encouragement.data.HistoryData;
 import com.person.xuan.encouragement.entity.Person;
 import com.person.xuan.encouragement.util.ShareValueUtil;
 import com.person.xuan.encouragement.widget.EncouragementWrapper;
@@ -15,7 +16,7 @@ import com.person.xuan.encouragement.widget.EncouragementWrapper;
  * Created by chenxiaoxuan1 on 16/1/4.
  */
 public class ControlService extends Service {
-    private String TAG = "EncouragementWidgetProvider";
+    private String TAG = ControlService.class.getSimpleName();
     private static final int ACTION_USE_STAR = 1001;
     private static final int ACTION_FINISH_PLAN = 1002;
     private static final int ACTION_ADD_PLAN = 1003;
@@ -43,7 +44,7 @@ public class ControlService extends Service {
                 Toast.makeText(this, "星星不足,快完成点计划吧!", Toast.LENGTH_SHORT).show();
             }
         } else if (action == ACTION_FINISH_PLAN) {
-            EncouragementWrapper.addHistoryPlan(person.getPlan(id));
+            HistoryData.addHistoryPlan(person.getPlan(id));
             person.finish(id);
         }
         EncouragementWrapper.writePerson(this, person);

@@ -15,6 +15,8 @@ import java.io.IOException;
  * Created by chenxiaoxuan1 on 15/12/17.
  */
 public class FileTool {
+    public static final int STATE_GET_FILE_END = -1;
+    public static final int STATE_OVER_STEP = -2;
     private static final String mFilePath = ShareValueUtil.EXTERNAL_STORAGEP_FILE_PATH;
 
     public static void addLine(final String fileName, final String data) {
@@ -42,7 +44,7 @@ public class FileTool {
         }.start();
     }
 
-    public static void getLines(final String fileName, OnGetLine onGetLine) {
+    public static void getLines(final String fileName, int startLine, int endLine, OnGetLine onGetLine) {
         File dir = Environment.getExternalStoragePublicDirectory(mFilePath);
         File file = new File(dir, fileName);
         String content = null;
@@ -51,9 +53,17 @@ public class FileTool {
                 FileReader fileReader = new FileReader(file);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
                 for (int i = 0; (content = bufferedReader.readLine()) != null; i++) {
-                    onGetLine.onGetLine(content, i);
+                    if (i >= endLine) {
+                        onGetLine.onGetLine(null, STATE_OVER_STEP);
+                        bufferedReader.close();
+                        return;
+                    }
+                    if (i >= startLine) {
+                        onGetLine.onGetLine(content, i);
+                    }
                 }
-                onGetLine.onGetLine(null, -1);
+
+                onGetLine.onGetLine(null, STATE_GET_FILE_END);
                 bufferedReader.close();
             }
         } catch (IOException e) {

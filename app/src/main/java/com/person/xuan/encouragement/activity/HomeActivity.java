@@ -174,7 +174,8 @@ public class HomeActivity extends Activity implements View.OnClickListener {
     private View.OnClickListener mAddPlanListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mAddEditPlanFragment.setEditMode();
+            mAddEditPlanFragment.setAddMode();
+            mAddEditPlanFragment.setEditable();
             showFragment(ADD_EDIT_PLAN_FRAMENT);
         }
     };

@@ -101,8 +101,12 @@ public class AddEditPlanFragment extends BaseFragment implements View.OnClickLis
         }
     }
 
-    public void setEditMode() {
+    public void setEditable() {
         mIsEditable = true;
+    }
+
+    public void setAddMode() {
+        mPlan = new Plan();
     }
 
     public void setWatchMode(Context context, long id) {
@@ -136,7 +140,7 @@ public class AddEditPlanFragment extends BaseFragment implements View.OnClickLis
                         Toast.makeText(getActivity(), getString(R.string.add_more_words_tips), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    setEditMode();
+                    setEditable();
                 }
                 break;
             case R.id.iv_has_reward:

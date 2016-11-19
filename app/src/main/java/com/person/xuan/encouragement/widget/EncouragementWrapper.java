@@ -5,9 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
-import com.person.xuan.encouragement.entity.History;
 import com.person.xuan.encouragement.entity.Person;
-import com.person.xuan.encouragement.entity.Plan;
 import com.person.xuan.encouragement.file.FileTool;
 import com.person.xuan.encouragement.util.ShareValueUtil;
 
@@ -20,47 +18,6 @@ import java.util.Set;
 public class EncouragementWrapper {
     private static Person mPerson;
     private static int mTextSize;
-
-    public static void addHistoryPlan(Plan plan) {
-        FileTool.addLine(ShareValueUtil.HISTORY_FILE, ShareValueUtil.GSON.toJson(plan));
-    }
-
-    //// TODO: 16/11/18  
-    public static void getHistory(final OnGetHistory onGetHistory) {
-        getHistoryFromFile(new OnGetHistoryFromFile() {
-            @Override
-            public void onGet(History history) {
-                onGetHistory.onGet(history);
-            }
-        });
-    }
-
-    public static void getHistory(int startIndex,int endIndex,final OnGetHistory onGetHistory) {
-        getHistoryFromFile(new OnGetHistoryFromFile() {
-            @Override
-            public void onGet(History history) {
-                onGetHistory.onGet(history);
-            }
-        });
-    }
-
-    private static void getHistoryFromFile(final OnGetHistoryFromFile onGetHistory) {
-        FileTool.getLines(ShareValueUtil.HISTORY_FILE, new FileTool.OnGetLine() {
-            History history = new History();
-
-            @Override
-            public void onGetLine(String line, int lineNum) {
-                if (lineNum >= 0) {
-                    Plan plan = ShareValueUtil.GSON.fromJson(line, Plan.class);
-                    if (plan != null) {
-                        history.addPlan(plan);
-                    }
-                } else {
-                    onGetHistory.onGet(history);
-                }
-            }
-        });
-    }
 
     public static void writeData(Context context, String fileName, String key, Object data) {
         SharedPreferences.Editor editor = context.getSharedPreferences(fileName, Context.MODE_PRIVATE).edit();
@@ -129,12 +86,7 @@ public class EncouragementWrapper {
 //
 //    }
 
-    public interface OnGetHistory {
-        void onGet(History history);
-    }
 
-    private interface OnGetHistoryFromFile {
-        void onGet(History history);
-    }
+
 
 }

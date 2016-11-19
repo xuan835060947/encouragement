@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.person.xuan.encouragement.R;
+import com.person.xuan.encouragement.data.HistoryData;
 import com.person.xuan.encouragement.entity.Person;
 import com.person.xuan.encouragement.entity.Plan;
 import com.person.xuan.encouragement.util.ShareValueUtil;
@@ -135,7 +136,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
             @Override
             public void onClick(View v) {
                 ViewHolder viewHolder = (ViewHolder) v.getTag();
-                EncouragementWrapper.addHistoryPlan(mPerson.getPlan(viewHolder.id));
+                HistoryData.addHistoryPlan(mPerson.getPlan(viewHolder.id));
                 mPerson.finish(viewHolder.id);
                 EncouragementWrapper.writePerson(getActivity(), mPerson);
                 refreshView();
