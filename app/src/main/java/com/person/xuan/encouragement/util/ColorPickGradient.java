@@ -3,13 +3,16 @@ package com.person.xuan.encouragement.util;
 import android.graphics.Color;
 
 /**
+ * 线性颜色取色器
  * Created by chenxiaoxuan1 on 16/3/25.
  */
 public class ColorPickGradient {
+    //设置的颜色
     public static final int[] PICKCOLORBAR_COLORS = new int[]{0xFFFFFFFF,0xFFFF3030, 0xFFF4A460,
             0xFFFFFF00, 0xFF66CD00,
             0xFF458B00, 0xFF0000EE,
             0xFF912CEE,0xFF000000};
+    //每个颜色的位置
     public static final float[] PICKCOLORBAR_POSITIONS = new float[]{0f, 0.1f, 0.2f, 0.3f, 0.5f, 0.65f,0.8f,0.9f,1f};
 
     private int[] mColorArr = PICKCOLORBAR_COLORS;
@@ -22,6 +25,11 @@ public class ColorPickGradient {
     public ColorPickGradient() {
     }
 
+    /**
+     * 获取某个百分比位置的颜色
+     * @param radio 取值[0,1]
+     * @return
+     */
     public int getColor(float radio) {
         int startColor;
         int endColor;
@@ -46,6 +54,13 @@ public class ColorPickGradient {
         return (radio - startPosition) / (endPosition - startPosition);
     }
 
+    /**
+     *  取两个颜色间的渐变区间 中的某一点的颜色
+     * @param startColor
+     * @param endColor
+     * @param radio
+     * @return
+     */
     public int getColorFrom(int startColor, int endColor, float radio) {
         int redStart = Color.red(startColor);
         int blueStart = Color.blue(startColor);
